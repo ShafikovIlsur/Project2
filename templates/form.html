@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Оценка погодных условий</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 500px;
+        }
+
+        label {
+            padding-right: 5px;
+        }
+
+        .item {
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .result{
+
+        }
+
+        button {
+            margin-top: 5px;
+            border: none;
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+            background-color: #02cd02;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Оценка погодных условий</h1>
+    <form action="/" method="post">
+        <div class="item">
+            <label for="start_city">Начальный город:</label>
+            <input type="text" name="start_city" id="start_city" placeholder="Введите начальный город">
+        </div>
+        <div class="item">
+            <label for="end_city">Конечный город:</label>
+            <input type="text" name="end_city" id="end_city" placeholder="Введите конечный город">
+        </div>
+
+        <button type="submit">Проверить погоду</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <h2>Оценка погодных условий: {{result}}</h2>
+        </div>
+        <div class="forecast">
+            <h2>Начальная точка: {{ start_city }}</h2>
+            <h3>Температура: {{ start_temperature }} °C</h3>
+            <h3>Влажность: {{ start_humidity }} %</h3>
+            <h3>Скорость ветра: {{ start_wind_speed }} км/ч</h3>
+            <h3>Вероятность дождя: {{ start_rain_probability }}%</h3>
+        </div>
+        <div class="forecast">
+            <h2>Конечная точка: {{ end_city }}</h2>
+            <h3>Температура: {{ end_temperature }} °C</h3>
+            <h3>Влажность: {{ end_humidity }} %</h3>
+            <h3>Скорость ветра: {{ end_wind_speed }} км/ч</h3>
+            <h3>Вероятность дождя: {{ end_rain_probability }}%</h3>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
